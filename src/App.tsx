@@ -1,26 +1,25 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import { requestPicturesQuery } from "./api.js";
-import Loader from "./components/Loader/Loader.jsx";
+import { requestPicturesQuery, UnsplashPhoto } from "./api";
+import Loader from "./components/Loader/Loader";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import SearchBar from "./components/SearchBar/SearchBar";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
-import ImageModal from "./components/ImageModal/ImageModal.jsx";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage.jsx";
+import ImageModal from "./components/ImageModal/ImageModal";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import Modal from "react-modal";
 
-Modal.setAppElement;
+Modal.setAppElement(document.getElementById("root") as HTMLElement);
 
 function App() {
-  const [pictures, setPictures] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalData, setModalData] = useState(null);
-  const [showLoadMore, setShowLoadMore] = useState(true);
+  const [pictures, setPictures] = useState<UnsplashPhoto[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [modalData, setModalData] = useState<string | null>(null);
+  const [showLoadMore, setShowLoadMore] = useState<boolean>(true);
 
   useEffect(() => {
     if (query.length === 0) return;
@@ -34,10 +33,9 @@ function App() {
         if (data.total === 0) {
           setError(true);
           setShowLoadMore(false);
-          return
+          return;
         }
         setShowLoadMore(true);
-
       } catch (error) {
         setError(true);
         setShowLoadMore(false);
@@ -49,7 +47,7 @@ function App() {
     fetchPicturesQuery();
   }, [query, page]);
 
-  const onSearchBar = (name) => {
+  const onSearchBar = (name: string) => {
     setQuery(name);
     setPictures([]);
     setPage(1);
@@ -59,7 +57,7 @@ function App() {
     setPage((page) => page + 1);
   };
 
-  const openModal = (picture) => {
+  const openModal = (picture: UnsplashPhoto) => {
     setModalData(picture.urls.regular);
     setModalIsOpen(true);
   };
@@ -90,3 +88,5 @@ function App() {
 }
 
 export default App;
+
+

@@ -1,6 +1,10 @@
 import React from "react";
 
-const LoadMoreBtn = ({ onSearchPage }) => {
+interface LoadMoreBtnProps {
+  onSearchPage: () => void;
+}
+
+const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({ onSearchPage }) => {
   return (
     <button className="search-button" onClick={onSearchPage} type="submit">
       Load more
