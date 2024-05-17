@@ -1,0 +1,26 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: rgb(218, 218, 218);
+}
+
+form {
+  margin-bottom: 15px;
+}
+
+li {
+  list-style: none;
+   flex-grow: 1; 
+  margin: 10px;
+  box-sizing: border-box;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
