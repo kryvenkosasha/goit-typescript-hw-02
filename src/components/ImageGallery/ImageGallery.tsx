@@ -5,9 +5,13 @@ import "./ImageGallery.css";
 interface Picture {
   id: string;
   urls: {
-    small: string,
+    raw: string;
+    full: string;
+    regular: string;
+    small: string;
+    thumb: string;
   };
-  alt_description: string ;
+  alt_description: string;
 }
 
 interface ImageGalleryProps {

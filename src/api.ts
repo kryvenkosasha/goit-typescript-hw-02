@@ -7,7 +7,7 @@ const instance = axios.create({
 
 export interface UnsplashPhoto {
   id: string;
-  description: string | null;
+  alt_description: string ;
   urls: {
     raw: string;
     full: string;
