@@ -18,7 +18,7 @@ function App() {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [modalData, setModalData] = useState<string | null>(null);
+  const [modalData, setModalData] = useState<string >("");
   const [showLoadMore, setShowLoadMore] = useState<boolean>(true);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function App() {
   };
 
   const closeModal = () => {
-    setModalData(null);
+    setModalData("");
     setModalIsOpen(false);
   };
 

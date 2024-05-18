@@ -7,7 +7,7 @@ interface Picture {
   urls: {
     small: string,
   };
-  alt_description: string | null;
+  alt_description: string ;
 }
 
 interface ImageGalleryProps {
